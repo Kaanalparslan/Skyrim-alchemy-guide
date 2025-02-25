@@ -1,4 +1,4 @@
-# 🧪 Skyrim Potion Finder
+# 🧪 Skyrim Alchemy Guide
 
 A fun and simple app to help you craft potions in Skyrim without flipping through menus or wikis.  
 Search for potions, see required ingredients, and find out what you can craft with what you already have!
