@@ -35,14 +35,15 @@ flutter pub get
 
 # Run the app
 flutter run
-🤝 Contributing
+'''
+## 🤝 Contributing
 Got an idea to make the app better? Contributions are welcome!
 
 Fork the repository.
 Create a new branch: git checkout -b feature-name
 Make your changes and commit: git commit -m 'Add new feature'
 Push and open a pull request.
-📜 License
+## 📜 License
 This project is licensed under the MIT License.
 Feel free to use, modify, and share it!
 
