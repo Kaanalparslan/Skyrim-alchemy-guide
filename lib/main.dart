@@ -9,6 +9,20 @@ class SkyrimPotionApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primaryColor: Color(0xFF2E7D32),
+        scaffoldBackgroundColor: Color(0xFFE8F5E9),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Color(0xFF1B5E20),
+          titleTextStyle: TextStyle(color: Colors.white, fontFamily: 'Cinzel', fontSize: 24),
+        ),
+        textTheme: TextTheme(
+          bodyLarge: TextStyle(color: Colors.green[900], fontFamily: 'Cinzel'),
+          bodyMedium: TextStyle(color: Colors.green[800], fontFamily: 'Cinzel'),
+          titleLarge: TextStyle(color: Colors.green[700], fontFamily: 'Cinzel', fontWeight: FontWeight.bold),
+        ),
+      ),
       home: HomePage(),
     );
   }
@@ -38,10 +52,11 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Skyrim İksir Arayıcı'),
-        backgroundColor: Colors.green[700],
+        centerTitle: true,
       ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color(0xFF1B5E20),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
@@ -53,7 +68,8 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.green[700],
+        selectedItemColor: Color(0xFFF6FCDF),
+        unselectedItemColor: Colors.lightGreen.shade100,
         onTap: _onItemTapped,
       ),
     );
@@ -63,12 +79,8 @@ class _HomePageState extends State<HomePage> {
 class PotionCategoryPage extends StatelessWidget {
   final Map<String, Map<String, List<String>>> potionCategories = {
     'Yenileme İksirleri': {
-      'Sağlık Düzeltme': ['Daedra Kalbi', 'Buğday', 'Mavi Dağ Çiçeği', 'Keskindiş Gözü', 'Kabarık Mantar', 'İblis Oturağı', 'Kaya Bülbülü Yumurtası', 'Bataklık Tomurcuğu', 'Közlenmiş Sıçan Derisi', 'Kelebek Kanadı', 'Mavi Yusufçuk', 'Kül Çıvanı Peltesi (Dragonborn)', 'Felsaad Kırlangıç Tüyleri (Dragonborn)', ],
-      'Efsun Düzeltme': ['Funda Kalbi', 'Cüce Yağı', 'Elf Kulağı' 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', ],
-      'Kuvvet Düzeltme': ['Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', ],
-      'Sağlık Yenileme': ['Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', ],
-      'Efsun Yenileme': ['Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', ],
-      'Kuvvet Yenileme': ['Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', 'Cüce', ],
+      'Sağlık Düzeltme': ['Daedra Kalbi', 'Buğday', 'Mavi Dağ Çiçeği'],
+      'Efsun Düzeltme': ['Funda Kalbi', 'Cüce Yağı', 'Elf Kulağı'],
     },
     'Güçlendirme İksirleri': {
       'Kuvvet Düzeltme': ['Arı', 'Bal Peteği', 'Daedra Kalbi'],
@@ -97,14 +109,31 @@ class PotionCategoryPage extends StatelessWidget {
     return ListView(
       padding: EdgeInsets.all(16.0),
       children: potionCategories.entries.map((category) {
-        return ExpansionTile(
-          title: Text(category.key, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-          children: category.value.entries.map((potion) {
-            return ListTile(
-              title: Text(potion.key),
-              subtitle: Text('Malzemeler: ${potion.value.join(', ')}'),
-            );
-          }).toList(),
+        return Card(
+          color: Colors.lightGreen.shade100,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
+          elevation: 5,
+          child: ExpansionTile(
+            tilePadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            title: Text(category.key, style: Theme.of(context).textTheme.titleLarge),
+            children: category.value.entries.map((potion) {
+              return Container(
+                margin: EdgeInsets.symmetric(vertical: 4.0),
+                padding: EdgeInsets.all(8.0),
+                decoration: BoxDecoration(
+                  color: Color(0xFFF6FCDF),
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(color: Colors.green.shade200, blurRadius: 3, offset: Offset(0, 2))
+                  ],
+                ),
+                child: ListTile(
+                  title: Text(potion.key, style: TextStyle(color: Colors.green[900], fontSize: 18)),
+                  subtitle: Text('Malzemeler: ${potion.value.join(', ')}', style: TextStyle(color: Colors.green[700])),
+                ),
+              );
+            }).toList(),
+          ),
         );
       }).toList(),
     );
@@ -124,7 +153,7 @@ class _InventoryPageState extends State<InventoryPage> {
   ];
 
   final Map<String, List<String>> potions = {
-    'Sağlık Düzeltme': ['Daedra Kalbi', 'Buğday', 'Mavi Dağ Çiçeği', 'Keskindiş Gözü', 'Kabarık Mantar', 'İblis Oturağı', 'Kaya Bülbülü Yumurtası', 'Bataklık Tomurcuğu', 'Közlenmiş Sıçan Derisi', 'Kelebek Kanadı', 'Mavi Yusufçuk', 'Kül Çıvanı Peltesi (Dragonborn)', 'Felsaad Kırlangıç Tüyleri (Dragonborn)', ],
+    'Sağlık Düzeltme': ['Daedra Kalbi', 'Buğday', 'Mavi Dağ Çiçeği'],
     'Efsun Düzeltme': ['Funda Kalbi', 'Cüce Yağı', 'Elf Kulağı'],
     'Kuvvet Düzeltme': ['Arı', 'Bal Peteği', 'Daedra Kalbi'],
     'Görünmezlik': ['Vampir Tozu', 'Nirnotu', 'Mehtap Güvesi Kanadı'],
@@ -160,7 +189,8 @@ class _InventoryPageState extends State<InventoryPage> {
             spacing: 8.0,
             children: inventory.map((ingredient) {
               return Chip(
-                label: Text(ingredient),
+                backgroundColor: Color(0xFFF6FCDF),
+                label: Text(ingredient, style: TextStyle(color: Colors.green[900])),
                 onDeleted: () {
                   setState(() {
                     inventory.remove(ingredient);
@@ -172,7 +202,7 @@ class _InventoryPageState extends State<InventoryPage> {
           SizedBox(height: 10),
           Expanded(
             child: availablePotions.isEmpty
-                ? Center(child: Text('Envanterindeki malzemelerle iksir yapılamıyor.'))
+                ? Center(child: Text('Envanterindeki malzemelerle iksir yapılamıyor.', style: TextStyle(color: Colors.green[900])))
                 : ListView.builder(
               itemCount: availablePotions.length,
               itemBuilder: (context, index) {
@@ -180,9 +210,11 @@ class _InventoryPageState extends State<InventoryPage> {
                 final matchingIngredients =
                 potion.value.where((i) => inventory.contains(i)).toList();
                 return Card(
+                  color: Color(0xFFF6FCDF),
+                  elevation: 3,
                   child: ListTile(
-                    title: Text(potion.key),
-                    subtitle: Text('Kullanılabilir Malzemeler: ${matchingIngredients.join(', ')}'),
+                    title: Text(potion.key, style: TextStyle(color: Colors.green[900], fontSize: 18)),
+                    subtitle: Text('Kullanılabilir Malzemeler: ${matchingIngredients.join(', ')}', style: TextStyle(color: Colors.green[900])),
                   ),
                 );
               },
@@ -215,7 +247,7 @@ class _DropdownSearchState extends State<DropdownSearch> {
       items: allIngredients.map((ingredient) {
         return DropdownMenuItem(
           value: ingredient,
-          child: Text(ingredient),
+          child: Text(ingredient, style: TextStyle(color: Colors.green[900])),
         );
       }).toList(),
       onChanged: (value) {
@@ -231,6 +263,9 @@ class _DropdownSearchState extends State<DropdownSearch> {
       decoration: InputDecoration(
         labelText: 'Malzeme Ekle',
         border: OutlineInputBorder(),
+        filled: true,
+        fillColor: Color(0xFFF2F6D0),
+        labelStyle: TextStyle(color: Colors.green[900]),
       ),
     );
   }
