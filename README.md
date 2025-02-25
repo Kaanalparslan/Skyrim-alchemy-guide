@@ -15,9 +15,9 @@ Search for potions, see required ingredients, and find out what you can craft wi
 
 ## 📸 Screenshots
 
-| Potion Search | Inventory | Categories |
+| Categories | Inventory | Potion Search |
 |---------------|-----------|------------|
-| ![Potion Search](screenshots/potion_search.png) | ![Inventory](screenshots/inventory.png) | ![Categories](screenshots/categories.png) |
+| ![Categories](screenshots/categories.png) | ![Inventory](screenshots/inventory.png) | ![Potion Search](screenshots/potion_search.png) |
 
 ---
 
@@ -27,8 +27,8 @@ Run the following commands to set up the app:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/skyrim-potion-finder.git
-cd skyrim-potion-finder
+git clone https://github.com/Kaanalparslan/Skyrim-alchemy-guide.git
+cd Skyrim-alchemy-guide
 
 # Install dependencies
 flutter pub get
