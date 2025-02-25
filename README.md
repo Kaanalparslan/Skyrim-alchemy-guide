@@ -35,7 +35,8 @@ flutter pub get
 
 # Run the app
 flutter run
-'''
+```
+
 ## 🤝 Contributing
 Got an idea to make the app better? Contributions are welcome!
 
