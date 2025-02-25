@@ -1,4 +1,3 @@
-```markdown
 # 🧪 Skyrim Potion Finder
 
 A fun and simple app to help you craft potions in Skyrim without flipping through menus or wikis.  
@@ -8,8 +7,8 @@ Search for potions, see required ingredients, and find out what you can craft wi
 
 ## 🌟 Features
 
-- 🔍 **Potion Search:** Find potions and view required ingredients.  
-- 📦 **Inventory Check:** Add your ingredients and see what potions you can make.  
+- 🔍 **Potion Search:** Find potions and view required ingredients.
+- 📦 **Inventory Check:** Add your ingredients and see what potions you can make.
 - 🎨 **Skyrim-Themed Design:** Simple, clean, and immersive.
 
 ---
@@ -36,27 +35,15 @@ flutter pub get
 
 # Run the app
 flutter run
-```
-
----
-
-## 🤝 Contributing
-
+🤝 Contributing
 Got an idea to make the app better? Contributions are welcome!
 
-1. Fork the repository.
-2. Create a new branch: `git checkout -b feature-name`
-3. Make your changes and commit: `git commit -m 'Add new feature'`
-4. Push and open a pull request.
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License.  
+Fork the repository.
+Create a new branch: git checkout -b feature-name
+Make your changes and commit: git commit -m 'Add new feature'
+Push and open a pull request.
+📜 License
+This project is licensed under the MIT License.
 Feel free to use, modify, and share it!
 
----
-
-🎮 *Spend less time searching for ingredients and more time adventuring in Skyrim!*
-```
+🎮 Spend less time searching for ingredients and more time adventuring in Skyrim!
