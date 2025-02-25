@@ -47,5 +47,5 @@ Push and open a pull request.
 ## 📜 License
 This project is licensed under the MIT License.
 Feel free to use, modify, and share it!
-
-## 🎮 Spend less time searching for ingredients and more time adventuring in Skyrim!
+---
+🎮 Spend less time searching for ingredients and more time adventuring in Skyrim!
